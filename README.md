@@ -7,8 +7,7 @@ The goal of our project is to understand the Software Development Life Cycle (SD
 
 ## Repository Contents
 
-The repository will contain the source code, database setup files, and other files used to build and demonstrate the prototype.(Coming very soon from Ryan)
-
+The repository contains the source code, database setup file, and other files used to build and demonstrate the prototype.
 ## Team Members
 
 - Claire Graves
