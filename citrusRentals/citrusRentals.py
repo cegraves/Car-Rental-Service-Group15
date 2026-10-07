@@ -57,6 +57,9 @@ def index():
     return render_template('carRentalIndex.html', vehicles=vehicles, selected_category=selected_category)
 
 # Booking Route
+from datetime import datetime
+
+# Booking Route
 @app.route('/book', methods=['POST'])
 def book():
     vehicle_id = request.form.get('vehicle_id')
@@ -105,6 +108,27 @@ def book():
         return_date=return_date
     )
     db.session.add(new_booking)
+    db.session.commit()
+
+    # 6. Calculate total price and save Payment record
+    vehicle = Vehicle.query.get(vehicle_id)
+    try:
+        d1 = datetime.strptime(pickup_date, '%Y-%m-%d')
+        d2 = datetime.strptime(return_date, '%Y-%m-%d')
+        days = (d2 - d1).days
+        if days <= 0:
+            days = 1
+    except:
+        days = 1
+
+    total_amount = vehicle.price * days
+
+    new_payment = Payment(
+        booking_id=new_booking.id,
+        amount=total_amount,
+        status='Completed'
+    )
+    db.session.add(new_payment)
     db.session.commit()
     
     return redirect(url_for('index'))
@@ -159,5 +183,3 @@ with app.app_context():
         db.session.bulk_save_objects(vehicles_data)
         db.session.commit()
 """
-if __name__ == '__main__':
-    app.run(debug=True)
