@@ -183,3 +183,5 @@ with app.app_context():
         db.session.bulk_save_objects(vehicles_data)
         db.session.commit()
 """
+if __name__ == '__main__':
+    app.run(debug=True)
