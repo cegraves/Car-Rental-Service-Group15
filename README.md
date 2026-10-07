@@ -53,13 +53,16 @@ The current prototype includes:
 - Vehicle images and daily rental prices loaded dynamically from the database
 - Filtering vehicles by category (SUV, Sedan, Truck, and Electric)
 - Vehicle selection and booking form
-- JavaScript-based booking modal
+- JavaScript-based booking and payment modals
 - Pickup and return date selection
 - Syracuse `@syr.edu` email validation
 - 9-digit SUID validation
 - Prevention of overlapping bookings for the same vehicle
 - Automatic creation of a user record when a new customer makes a booking
 - Booking information stored in the MySQL database
+- Multi-step booking and mock payment checkout
+- Dynamic rental price calculation based on selected dates and daily vehicle price
+- Payment records stored in MySQL with booking ID, amount, and status
 
 
 ## Database
